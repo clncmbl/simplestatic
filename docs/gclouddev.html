@@ -1,3 +1,10 @@
 <!DOCTYPE html>
-<title>Using the Google Cloud Shell Editor for development</title>
+<title>Development in Google Cloud</title>
+<h1>Development in Google Cloud</h1>
+<h2>Using the Google Cloud Shell Editor for development</h2>
 <p>At https://cloud.google.com, you can access a code editor that you can use for development.  It has a suprising number of features for a free service.  One limitation, however, is that you cannot use the editor for more than 50 hours per week.</p>
+<h2>Accessing GitHub read/write from the Google Cloud Shell</h2>
+<p>In this scenario, we use an existing (possibly new) repository on GitHub and then clone it into the Google Cloud Shell.</p>
+<p>In the shell, create an SSH key to serve as a GitHub deploy key.  When creating the key, give it a filename indicating that it is a deploy key.  If the Google Cloud Project will have multiple repositories, you should also ensure that the name is unique to the repository.</p>
+<p>Add the key to GitHub as a read/write deploy key for the repository.</p>
+
