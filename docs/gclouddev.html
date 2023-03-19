@@ -2,10 +2,10 @@
 <title>Development in Google Cloud</title>
 <h1>Development in Google Cloud</h1>
 <h2>Using the Google Cloud Shell Editor for development</h2>
-<p>At https://cloud.google.com, you can access a code editor that you can use for development.  It has a surprising number of features for a free service.  One limitation, however, is that you cannot use the editor for more than 50 hours per week.</p>
+<p>At <a href="https://cloud.google.com">cloud.google.com</a>, you can access a code editor that you can use for development.  It has a surprising number of features for a free service.  One limitation, however, is that you cannot use the editor for more than 50 hours per week.</p>
 <h2>Accessing GitHub read/write from the Google Cloud Shell</h2>
 <p>In this scenario, we use an existing (possibly new) repository on GitHub and then clone it into the Google Cloud Shell.</p>
 <p>In the shell, create an SSH key to serve as a GitHub deploy key.  When creating the key, give it a filename indicating that it is a deploy key.  Deploy keys generally do not have passwords so be careful not it more generally.  If the Google Cloud account will have multiple repositories, ensure that the name is unique to the repository; deploy keys are specific to a GitHub repository and cannot be associated with more than one repository.</p>
 <p>Add the key to GitHub as a read/write deploy key for the repository.</p>
-<p>For the setup of multiple deploy keys (that is, if you have multiple repositories in your Google Cloud account), see https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys.</p>
+<p>For the setup of multiple deploy keys (that is, if you are using multiple repositories in your Google Cloud account), see the section on multiple repositories in the <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys">GitHub doc on managing deploy-keys</a>.</p>
 <p>So that the git commands use the correct SSH key for interacting with the GitHub server, edit (create, if necessary) ~/.ssh/config so that under the relevant Host (which should eventually match that in the .git/config file) has an IdentityFile setting that points to the newly created deploy key.</p>
