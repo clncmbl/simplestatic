@@ -22,3 +22,10 @@ Your public key has been saved in /home/me/.ssh/myrepo_deploykey.pub
 <p>Add the key to GitHub as a read/write deploy key for the repository.</p>
 <p>For the setup of multiple deploy keys (that is, if you are using multiple repositories in your Google Cloud account), see the section on multiple repositories in the <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys">GitHub doc on managing deploy-keys</a>.</p>
 <p>So that the git commands use the correct SSH key for interacting with the GitHub server, edit (create, if necessary) ~/.ssh/config so that under the relevant Host (which should eventually match that in the .git/config file) has an IdentityFile setting that points to the newly created deploy key.</p>
+
+<p>Following through with the same key file as created above, the ~/.ssh/config file should contain a Host entry similar to the following:</p>
+
+<pre>
+Host github.com
+    IdentityFile /home/me/.ssh/myrepo_deploykey
+</pre>
