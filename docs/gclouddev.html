@@ -5,7 +5,7 @@
 <p>At <a href="https://cloud.google.com">cloud.google.com</a>, you can access a code editor that you can use for development.  It has a surprising number of features for a free service.  One limitation, however, is that you cannot use the editor for more than 50 hours per week.</p>
 <h2>Accessing GitHub read/write from the Google Cloud Shell</h2>
 <p>In this scenario, we use an existing (possibly new) repository on GitHub and then clone it into the Google Cloud Shell.</p>
-<p>In the shell, create an SSH key to serve as a GitHub deploy key.  When creating the key, give it a filename indicating that it is a deploy key and indicating the repository for which it is a deploy key.  Making the name unique to the repository is especially important if the Google Cloud account will have multiple repositories; deploy keys are specific to a GitHub repository and cannot be associated with more than one repository.  Deploy keys usually do not have passwords, so be careful not to use a deploy key for more any other purpose.</p>
+<p>In the shell, create an SSH key to serve as a GitHub deploy key.  When creating the key, give it a filename indicating that it is a deploy key and indicating the repository for which it is a deploy key.  Making the name unique to the repository is especially important if the Google Cloud account will have multiple repositories; deploy keys are specific to a GitHub repository and cannot be associated with more than one repository.  Deploy keys usually do not have passwords, so be careful not to use a deploy key for any other purpose.</p>
 
 Here is an example of creating a deploy key for a repository named "myrepo":
 <pre>
@@ -26,6 +26,21 @@ Your public key has been saved in /home/me/.ssh/myrepo_deploykey.pub
 <p>Following through with the same key file as created above, the ~/.ssh/config file should contain a Host entry similar to the following:</p>
 
 <pre>
-Host github.com
-    IdentityFile /home/me/.ssh/myrepo_deploykey
+    Host github.com
+        IdentityFile /home/me/.ssh/myrepo_deploykey
 </pre>
+
+<p>The above Host entry can work for a single repository under the same account, but multiple repositories would need use different Host values in order allow the SSH client software to select the appropriate IdentityFile.  Allowing for multiple repositories requires Host entries more like the following:</p>
+
+<pre>
+    Host github.com-myrepo1
+        Hostname github.com
+        IdentityFile /home/me/.ssh/myrepo1_deploykey
+</pre>
+
+<p>In this case, you would need to also ensure that SSH invocations use a "github.com-myrepo1" hostname instead of "github.com".  A git clone command, for example, would need to look something like:</p>
+<pre>
+$ git clone git@github.com-myrepo1:mygithubname/myrepo1.git
+</pre>
+
+<p>The clone url will then appear in a <code>[remote ...]</code> block in the local .git/config file.  That setting in the .git/config file can be edited manually, if necessary.</p>
