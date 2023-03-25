@@ -28,19 +28,19 @@ Your public key has been saved in /home/me/.ssh/myrepo_deploykey.pub
 <p>Following through with the same key file as created above, the ~/.ssh/config file should contain a Host entry similar to the following:</p>
 
 <pre>
-  Host github.com
-    IdentityFile /home/me/.ssh/myrepo_deploykey
+Host github.com
+  IdentityFile /home/me/.ssh/myrepo_deploykey
 </pre>
 
 <p>The above Host entry can work for a single repository under the same account, but multiple repositories would need use different Host values in order allow the SSH client software to select the appropriate IdentityFile.  Allowing for multiple repositories requires Host entries more like the following:</p>
 
 <pre>
-  Host github.com-myrepo1
-    Hostname github.com
-    IdentityFile /home/me/.ssh/myrepo1_deploykey
+Host github.com-myrepo1
+  Hostname github.com
+  IdentityFile /home/me/.ssh/myrepo1_deploykey
 </pre>
 
-<p>In this case, you would need to also ensure that SSH invocations use a "github.com-myrepo1" hostname instead of "github.com".  A git clone command, for example, would need to look something like:</p>
+<p>In this case, you would also need to ensure that SSH invocations use a "github.com-myrepo1" hostname instead of "github.com".  A git clone command, for example, would need to look something like:</p>
 <pre>
 $ git clone git@github.com-myrepo1:mygithubname/myrepo1.git
 </pre>
