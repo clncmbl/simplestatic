@@ -1,3 +1,12 @@
+#bodycontent>header {
+  background-color: darkslategray;
+  color: ghostwhite;
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 pre {
   background-color: lightgray;
 }
