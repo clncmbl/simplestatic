@@ -1,10 +1,39 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: unset;
+}
+
+p, h1, h2 {
+  margin: .5em 0;
+}
+
+body {
+  background-color: #f2f2f2;
+}
+
+#bodycontent {
+  background-color: ghostwhite;
+  max-width: 90ch;
+  margin: auto;
+}
+
 #bodycontent>header {
   background-color: darkslategray;
   color: ghostwhite;
-  height: 3em;
+  min-height: 3em;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+#bodycontent>footer {
+    background-color: lightslategray;
+    min-height: 1em;
+}
+
+#contentcontainer {
+  padding: .5em;
 }
 
 pre {
