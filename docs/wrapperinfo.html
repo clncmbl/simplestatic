@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<title>Adding an HTML wrapper</title>
+
+<script src="main.js"></script>
+<article>
+<h1>Adding an HTML wrapper</h1>
+<h2>Intent</h2>
+<p>My intent behind this approach is to enable writing the core content of a page in a very simple HTML file structure but then embedding the page in a more complex HTML page.</p>
+
+<h2>Content HTML skeleton</h2>
+
+<p>The only tags absolutely required in a valid HTML document are the DOCTYPE and title tags. (See the <a href='https://html.spec.whatwg.org/multipage/syntax.html#syntax-tag-omission'>specification</a> for details.)  In addition to those, the skeleton of the simple content file includes a script tag to actually perform the wrapping and an article tag containing all of the content to be rendered.</p>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;title&gt;My page title&lt;/title&gt;
+&lt;script src="main.js"&gt;&lt;/script&gt;
+&lt;article&gt;
+...
+&lt;/article&gt;
+</pre>
+
+</article>
