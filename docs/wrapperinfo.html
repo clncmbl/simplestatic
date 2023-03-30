@@ -20,4 +20,46 @@
 &lt;/article&gt;
 </pre>
 
+<h2>A simple wrapper example</h2>
+<p>
+  The following is a very simple HTML wrapper example.  The name of the file is not important except that the name must be known to the Javascript file described in the next section.  So, we will assume that the filename is "wrapper.html".  We will see that name later in the Javascript file.
+<pre>
+&lt;div id=bodycontent&gt;
+&lt;header&gt;&lt;h1&gt;My Header Text&lt;/h1&gt;&lt;/header&gt;
+&lt;div id=contentcontainer&gt;&lt;/div&gt;
+&lt;footer&gt;&lt;/footer&gt;
+&lt;div&gt;
+</pre>
+</p>
+
+<h2>Wrapping code in main.js</h2>
+
+<pre>
+document.head.innerHTML += `
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;link rel="stylesheet" href="main.css?v=1"&gt;
+  &lt;style&gt;
+    body { visibility: hidden; }
+  &lt;style&gt;`
+</pre>
+
+<pre>
+async function wrapArticle() {
+  const docfrag = document.createDocumentFragment()
+
+  docfrag.appendChild(document.querySelector('body>article'))
+
+  const response = await fetch('wrapper.html')
+  const html = await response.text()
+  document.body.innerHTML = html
+
+  document.getElementById('contentcontainer').appendChild(docfrag)
+  document.body.style.visibility='visible'
+}
+
+window.addEventListener('DOMContentLoaded', async ev => {
+  await wrapArticle()
+})
+</pre>
+
 </article>
