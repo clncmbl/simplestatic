@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <title>Adding an HTML wrapper</title>
 
-<script src="main.js"></script>
+<script src="main.js?202303301915"></script>
 <article>
 <h1>Adding an HTML wrapper</h1>
 <h2>Intent</h2>
@@ -9,12 +9,12 @@
 
 <h2>Content HTML skeleton</h2>
 
-<p>The only tags absolutely required in a valid HTML document are the DOCTYPE and title tags. (See the <a href='https://html.spec.whatwg.org/multipage/syntax.html#syntax-tag-omission'>specification</a> for details.)  In addition to those, the skeleton of the simple content file includes a script tag to actually perform the wrapping and an article tag containing all of the content to be rendered.</p>
+<p>The only tags absolutely required in a valid HTML document are the DOCTYPE and title tags. (See the <a href='https://html.spec.whatwg.org/multipage/syntax.html#syntax-tag-omission'>specification</a> for details.)  In addition to those, the skeleton of the simple content file includes a script tag to actually perform the wrapping and an article tag containing all of the content to be rendered.  The intent of the query string on main.js is to allow for forcing cache updates when the file content changes.  [TODO: Try using a fixed javascript file (without a query string) that dynamically updates query timestamp on a Javascript file and CSS file in order to avoid stale cache files.]</p>
 
 <pre>
 &lt;!DOCTYPE html&gt;
 &lt;title&gt;My page title&lt;/title&gt;
-&lt;script src="main.js"&gt;&lt;/script&gt;
+&lt;script src="main.js?202303301915"&gt;&lt;/script&gt;
 &lt;article&gt;
 ...
 &lt;/article&gt;
@@ -34,10 +34,23 @@
 
 <h2>Wrapping code in main.js</h2>
 
+<div>
+  <p>
+    In main.js, we first modify the head of the HTML document.
+  </p>
+  <p>
+    The viewport meta tag helps with mobile compatibility.  The below setting is a reasonable placeholder pending refinement for the specific site.  For details on this tag, see <a href='https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag'>the MDN viewport meta tag documentation</a>.
+  </p>
+  <p>
+    The stylesheet link brings in the CSS code and assumes a "main.css" location.  The intent of the query string is to allow for forcing cache updates when the file content changes.
+  </p>
+  
+</div>
+
 <pre>
 document.head.innerHTML += `
   &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
-  &lt;link rel="stylesheet" href="main.css?v=1"&gt;
+  &lt;link rel="stylesheet" href="main.css?202303301915"&gt;
   &lt;style&gt;
     body { visibility: hidden; }
   &lt;style&gt;`

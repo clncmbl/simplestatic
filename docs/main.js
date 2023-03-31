@@ -4,7 +4,7 @@
 // back to visible at the end of wrapArticle.
 document.head.innerHTML += `
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="main.css?v=1">
+  <link rel="stylesheet" href="main.css?202303301915">
   <style>
     body { visibility: hidden; }
   <style>`
