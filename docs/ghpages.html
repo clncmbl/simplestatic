@@ -8,5 +8,7 @@
     "docs" and configured GitHub Pages to use the "docs" folder as the root.</p>
 <p>
   GitHub Pages appears to send responses with the HTTP header
-  <code>cache-control: max-age=600</code>.
+  <code>cache-control: max-age=600</code>.  This ensures that the browser
+  goes back to the server for a new file if the file was last retrieved more
+  than 10 minutes ago.
 </p>
