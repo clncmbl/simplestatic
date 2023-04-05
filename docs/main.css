@@ -1,9 +1,20 @@
 *, *::before, *::after {
   box-sizing: border-box;
   margin: unset;
+  padding: unset;
+}
+
+li {
+  list-style: none;
 }
 
 p, h1, h2 {
+  margin: .5em 0;
+}
+
+.sitetitle>div {
+  font-size: 1.5rem;
+  font-weight: bold;
   margin: .5em 0;
 }
 
@@ -21,11 +32,34 @@ body {
   background-color: darkslategray;
   color: ghostwhite;
   min-height: 3em;
+}
+
+.sitetitle {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+ul.topmenubar {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+ul.topmenubar li:hover {
+  background: #777;  
+}
+
+ul.topmenubar ul {
+  display: none;
+  position: absolute;
+}
+
+nav ul li:hover > ul {
+  display: block;
+  background: #777;
+}
 
 #bodycontent>footer {
     background-color: lightslategray;
