@@ -1,0 +1,11 @@
+
+# The intent of the devwebroot directory, if there is one, is to serve
+# as the startup directory for a simple development web server like
+# python -m http.server.  The idea is that we can create a symlink to
+# docs in such a way that links within the site work the same
+# in both development and production.  For example, if GitHub Pages
+# has a path as simplestatic/wrapperinfo.html, then we could create
+# symlink to the docs directory with the name simplestatic (assuming that
+# wrapperinfo.html is directly under docs).
+devwebroot/
+

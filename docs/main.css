@@ -29,7 +29,7 @@ body {
 }
 
 #bodycontent>header {
-  background-color: hsl(180, 25%, 40%);
+  background-color: hsl(180, 25%, 35%);
   color: ghostwhite;
   min-height: 3em;
 }
@@ -52,11 +52,11 @@ ul.topmenubar li a, ul.topmenubar li span {
   text-align: center;
   color: ghostwhite;
   text-decoration: none;
-  padding: 1rem;
+  padding: .5rem;
 }
 
 ul.topmenubar li:hover {
-  background: hsl(180, 25%, 30%);  
+  background: hsl(180, 25%, 25%);  
 }
 
 ul.topmenubar ul {
@@ -66,11 +66,11 @@ ul.topmenubar ul {
 
 ul.topmenubar li:hover > ul {
   display: block;
-  background: hsl(180, 25%, 30%);
+  background: hsl(180, 25%, 25%);
 }
 
 ul.topmenubar li ul li:hover {
-  background: hsl(180, 25%, 20%)
+  background: hsl(180, 25%, 45%);
 }
 
 #bodycontent>footer {

@@ -11,6 +11,10 @@
 
 <p>The only tags absolutely required in a valid HTML document are the DOCTYPE and title tags. (See the <a href='https://html.spec.whatwg.org/multipage/syntax.html#syntax-tag-omission'>specification</a> for details.)  In addition to those, the skeleton of the simple content file includes a script tag to actually perform the wrapping and an article tag containing all of the content to be rendered.</p>
 
+<p>
+  Note that the script tag is executed synchronously before the page processing continues.  If the tag had either the async attribute or the defer attribute or if it had type=module, the Javascript loading would be put on the defer queue and could result in an FOUC (a Flash Of Unstyled Content).
+</p>
+
 <pre>
 &lt;!DOCTYPE html&gt;
 &lt;title&gt;My page title&lt;/title&gt;
@@ -42,17 +46,17 @@
     The viewport meta tag helps with mobile compatibility.  The below setting is a reasonable placeholder pending refinement for a specific site.  For details on this tag, see <a href='https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag'>the MDN viewport meta tag documentation</a>.
   </p>
   <p>
-    The stylesheet link brings in the CSS code and assumes a "main.css" location.
+    The stylesheet link brings in the CSS code and assumes a "main.css" location.  Setting blocking=render helps to prevent an FOUC (that is, a Flash Of Unstyled Content).
   </p>
   <p>
-    Setting the body visibility to hidden in the style tag prevents an FOUC (that is, a Flash Of Unstyled Content).  Later, after completing the wrapping logic in the wrapArticle function, we make the body visible. 
+    Setting the body visibility to hidden in the style tag also helps to prevent an FOUC.  Later, after completing the wrapping logic in the wrapArticle function, we make the body visible. 
   </p>
 </div>
 
 <pre>
 document.head.innerHTML += `
   &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
-  &lt;link rel="stylesheet" href="main.css"&gt;
+  &lt;link rel="stylesheet" href="main.css" blocking=render&gt;
   &lt;style&gt;
     body { visibility: hidden; }
   &lt;style&gt;`
