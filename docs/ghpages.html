@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <title>Hosting in GitHub Pages</title>
+<script src="main.js"></script>
+<article>
+<h1>Hosting in GitHub Pages</h1>
+<h2>Basics</h2>
 <p>The GitHub repository must be public in order to use GitHub Pages
     with a free GitHub account.</p>
 <p>The root of a GitHub Pages site must come from either the
     root of the repository or a "docs" folder within the root.
     In this case, I named the directory containing the site files
     "docs" and configured GitHub Pages to use the "docs" folder as the root.</p>
+
+<h2>Aligning the URL path in development</h2>
+<p>
+  The default URL for a site hosted on GitHub Pages looks something like this: https://account_name.github.io/repository_name/page.html.  In this case, if the docs folder is used as the root, page.html would be located directly within the docs folder of the repository.  In order for non-relative links to work as expected in development (that is, not in GitHub Pages), the repository_name part of the path must be included.
+</p>
+<p>
+  One way to do this is to create a directory in development that is a sibling to the docs directory and exclude it from git.  Then within that directory, create a symlink to the docs directory having a name matching the repository name.  Starting a simple development web server (such as python -m http.server) in the docs directory should result in URL paths that are consistent with those in GitHub Pages.  This works well for development in the Google Cloud Shell, for example.
+</p>
+
+<h2>Cache-Control</h2>
 <p>
   GitHub Pages appears to send responses with the HTTP header
   <code>cache-control: max-age=600</code>.  This ensures that the browser
   goes back to the server for a new file if the file was last retrieved more
   than 10 minutes ago.
 </p>
+
+

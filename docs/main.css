@@ -2,6 +2,12 @@
   box-sizing: border-box;
   margin: unset;
   padding: unset;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.5;
+}
+
+html {
+  font-size: 14px;
 }
 
 li {
@@ -12,8 +18,16 @@ p, h1, h2 {
   margin: .5em 0;
 }
 
-.sitetitle>div {
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
   font-size: 1.5rem;
+}
+
+.sitetitle>div {
+  font-size: 2rem;
   font-weight: bold;
   margin: .5em 0;
 }
@@ -85,4 +99,5 @@ ul.topmenubar li ul li:hover {
 pre {
   background-color: lightgray;
   padding: .5em;
+  font-family: 'Courier New', Courier, monospace;
 }
