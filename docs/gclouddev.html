@@ -4,8 +4,9 @@
 <article>
 <h1>Development in Google Cloud</h1>
 <h2>Using the Google Cloud Shell Editor for development</h2>
-<p>At <a href="https://cloud.google.com">cloud.google.com</a>, you can access a code editor that you can use for development.  It has a surprising number of features for a free service.  One limitation, however, is that you cannot use the editor for more than 50 hours per week.</p>
-<h2>Accessing GitHub read/write from the Google Cloud Shell</h2>
+<p>At <a href="https://ide.cloud.google.com">ide.cloud.google.com</a>, you can access a code editor that you can use for development.  It has a surprising number of features for a free service.  One limitation, however, is that you cannot use the editor (or Google Cloud Shell in general) for more than 50 hours per week.</p>
+
+<h2>GitHub read/write access from the Google Cloud Shell</h2>
 <p>In this scenario, we use an existing (possibly new) repository on GitHub and then clone it into the Google Cloud Shell.</p>
 <p>In the shell, create an SSH key to serve as a GitHub deploy key.  When creating the key, give it a filename indicating that it is a deploy key and indicating the repository for which it is a deploy key.  Making the name unique to the repository is especially important if the Google Cloud account will have multiple repositories; deploy keys are specific to a GitHub repository and cannot be associated with more than one repository.  Deploy keys usually do not have passwords, so be careful not to use a deploy key for any other purpose.</p>
 <p>
@@ -33,7 +34,9 @@ Host github.com
   IdentityFile /home/me/.ssh/myrepo_deploykey
 </pre>
 
-<p>The above Host entry can work for a single repository under the same account, but multiple repositories would need use different Host values in order allow the SSH client software to select the appropriate IdentityFile.  Allowing for multiple repositories requires Host entries more like the following:</p>
+<p>
+  The above Host entry can work for a single repository under the same account, but multiple repositories would need use different Host values in order allow the SSH client software to select the appropriate IdentityFile.  Allowing for multiple repositories requires Host entries more like the following:
+</p>
 
 <pre>
 Host github.com-myrepo1
@@ -47,4 +50,33 @@ $ git clone git@github.com-myrepo1:mygithubname/myrepo1.git
 </pre>
 
 <p>The clone url will then appear in a <code>[remote ...]</code> block in the local .git/config file.  That setting in the .git/config file can be edited manually, if necessary.</p>
+
+<h2>Preview using Python's http.server module</h2>
+
+<p>
+  In the Google Shell, you can start a very simple development web server on the command line with the following command in the directory that you intend for the root of your web site.
+</p>
+<pre class=terminal>
+  $ python -m http.server 8080
+</pre>
+<p>
+  Using port 8080 is most convenient because that is Google Shell Web Preview's default port.
+</p>
+<p>
+  If using GitHub Pages to host your site and you have root-relative URLs (that is, URLs that start with a forward slash), be careful to take the GitHub Pages URL into consideration with starting your web server.  (This might not apply if you are using your own domain.)  The default GitHub Pages URL starts the path part of the URL with the repository name.  Consequently, in order for your preview to work consistently with GitHub Pages, both the root-relative URLs in your site and your preview path will also need to include the repository name.
+</p>
+<p>
+  A simple way to do this is to create a directory name something like "devwebroot" in the dev environment only.  That directory should not be in the actual production web root (which, in the case of GitHub Pages, is likely to be a directory name docs at the root of the repository).  Within that directory, create symlink with the same name as the GitHub repository name pointing to the directory that is actually the production web root (e.g., docs).  Then, start the development web server in that new "devwebroot" directory.  The devwebroot should be excluded from git.  In Google Cloud Shell, the directory structure would look something like the following.
+</p>
+<pre>
+  repository_root [might be same as repo_name, but not necessarily; depends on how cloned]
+    docs [contains all files for the website]
+    devwebroot
+      repo_name -> ../docs
+</pre>
+<p>
+  See <a href="https://cloud.google.com/shell/docs/using-web-preview">Google's documentation</a> for more information on Google Shell Web Preview.
+</p>
+
+
 </article>
