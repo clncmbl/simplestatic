@@ -8,9 +8,10 @@
 <h2>Accessing GitHub read/write from the Google Cloud Shell</h2>
 <p>In this scenario, we use an existing (possibly new) repository on GitHub and then clone it into the Google Cloud Shell.</p>
 <p>In the shell, create an SSH key to serve as a GitHub deploy key.  When creating the key, give it a filename indicating that it is a deploy key and indicating the repository for which it is a deploy key.  Making the name unique to the repository is especially important if the Google Cloud account will have multiple repositories; deploy keys are specific to a GitHub repository and cannot be associated with more than one repository.  Deploy keys usually do not have passwords, so be careful not to use a deploy key for any other purpose.</p>
-
+<p>
 Here is an example of creating a deploy key for a repository named "myrepo":
-<pre>
+</p>
+<pre class=terminal>
 $ <b>ssh-keygen -t e25519 -c "myemail@example.com"</b>
 Generating public/private ed25519 key pair.
 Enter file in which to save the key (/home/me/.ssh/id_ed25519): <b>/home/me/.ssh/myrepo_deploykey</b> 
@@ -41,7 +42,7 @@ Host github.com-myrepo1
 </pre>
 
 <p>In this case, you would also need to ensure that SSH invocations use a "github.com-myrepo1" hostname instead of "github.com".  A git clone command, for example, would need to look something like:</p>
-<pre>
+<pre class=terminal>
 $ git clone git@github.com-myrepo1:mygithubname/myrepo1.git
 </pre>
 

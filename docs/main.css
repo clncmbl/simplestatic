@@ -3,19 +3,23 @@
   margin: unset;
   padding: unset;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  line-height: 1.5;
+  line-height: 1.8;
 }
 
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 li {
   list-style: none;
 }
 
-p, h1, h2 {
+h1, h2 {
   margin: .5em 0;
+}
+
+p {
+  margin: 1em 0;
 }
 
 h1 {
@@ -38,7 +42,7 @@ body {
 
 #bodycontent {
   background-color: ghostwhite;
-  max-width: 90ch;
+  max-width: 80ch;
   margin: auto;
 }
 
@@ -100,4 +104,11 @@ pre {
   background-color: lightgray;
   padding: .5em;
   font-family: 'Courier New', Courier, monospace;
+  font-size: .9rem;
+  overflow: auto;
+}
+
+pre.terminal {
+  color: ghostwhite;
+  background-color: black;
 }
