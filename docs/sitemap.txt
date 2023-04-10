@@ -1,0 +1,4 @@
+https://clncmbl.github.io/simplestatic/index.html
+https://clncmbl.github.io/simplestatic/gclouddev.html
+https://clncmbl.github.io/simplestatic/ghpages.html
+https://clncmbl.github.io/simplestatic/wrapperinfo.html
