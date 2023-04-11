@@ -13,7 +13,7 @@
 
 <h2>Aligning the URL path in development</h2>
 <p>
-  The default URL for a site hosted on GitHub Pages looks something like this: https://account_name.github.io/repository_name/page.html.  In this case, if the docs folder is used as the root, page.html would be located directly within the docs folder of the repository.  In order for non-relative links to work as expected in development (that is, not in GitHub Pages), the repository_name part of the path must be included.
+  The default URL for a site hosted on GitHub Pages looks something like this: https://account_name.github.io/repository_name/page.html.  In this case, if the docs folder is used as the root, page.html would be located directly within the docs folder of the repository.  In order for root-relative links to work as expected in development (that is, outside of GitHub Pages), the repository_name part of the path must be included.
 </p>
 <p>
   One way to do this is to create a directory in development that is a sibling to the docs directory and exclude it from git.  Then within that directory, create a symlink to the docs directory having a name matching the repository name.  Starting a simple development web server (such as python -m http.server) in the docs directory should result in URL paths that are consistent with those in GitHub Pages.  This works well for development in the Google Cloud Shell, for example.
