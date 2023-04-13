@@ -8,7 +8,7 @@
 
 <h2>GitHub read/write access from the Google Cloud Shell</h2>
 <p>In this scenario, we use an existing (possibly new) repository on GitHub and then clone it into the Google Cloud Shell.</p>
-<p>In the shell, create an SSH key to serve as a GitHub deploy key.  When creating the key, give it a filename indicating that it is a deploy key and indicating the repository for which it is a deploy key.  Making the name unique to the repository is especially important if the Google Cloud account will have multiple repositories; deploy keys are specific to a GitHub repository and cannot be associated with more than one repository.  Deploy keys usually do not have passwords, so be careful not to use a deploy key for any other purpose.</p>
+<p>In the shell, create an SSH key to serve as a GitHub deploy key.  When creating the key, give it a filename indicating that it is a deploy key and indicating the repository for which it is a deploy key.  Making the name unique to the repository is especially important if the Google Cloud account will have multiple repositories; deploy keys are specific to a GitHub repository and cannot be associated with more than one repository.  Deploy keys usually do not have passwords, so be careful to not use a deploy key for any other purpose.</p>
 <p>
 Here is an example of creating a deploy key for a repository named "myrepo":
 </p>
@@ -24,7 +24,7 @@ Your public key has been saved in /home/me/.ssh/myrepo_deploykey.pub
 </pre>
 
 <p>Add the key to GitHub as a read/write deploy key for the repository.</p>
-<p>For the setup of multiple deploy keys (that is, if you are using multiple repositories in your Google Cloud account), see the section on multiple repositories in the <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys">GitHub doc on managing deploy-keys</a>.</p>
+
 <p>So that the git commands use the correct SSH key for interacting with the GitHub server, edit (create, if necessary) ~/.ssh/config so that under the relevant Host (which should eventually match that in the .git/config file) has an IdentityFile setting that points to the newly created deploy key.</p>
 
 <p>Following through with the same key file as created above, the ~/.ssh/config file should contain a Host entry similar to the following:</p>
@@ -50,6 +50,8 @@ $ git clone git@github.com-myrepo1:mygithubname/myrepo1.git
 </pre>
 
 <p>The clone url will then appear in a <code>[remote ...]</code> block in the local .git/config file.  That setting in the .git/config file can be edited manually, if necessary.</p>
+
+<p>For more information on the setup of multiple deploy keys (that is, if you are using multiple repositories in your Google Cloud account), see the section on multiple repositories in the <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys">GitHub doc on managing deploy-keys</a>.</p>
 
 <h2>Preview using Python's http.server module</h2>
 
@@ -77,6 +79,5 @@ $ git clone git@github.com-myrepo1:mygithubname/myrepo1.git
 <p>
   See <a href="https://cloud.google.com/shell/docs/using-web-preview">Google's Shell Web Preview documentation</a> for more information.
 </p>
-
 
 </article>
