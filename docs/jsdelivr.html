@@ -12,27 +12,34 @@ easy to use.  The home page for jsDelivr is at
 <a href='https://www.jsdelivr.com'>jsdelvr.com</a>.
     
 <p>
-Although jsDelivr can access files stored in either npm or GitHub,
-I am using it only with GitHub.  Consequently, I will not
-discuss its use with npm.
+Although jsDelivr can access files stored in either npm or
+GitHub, I am using it only with GitHub.  Consequently, I
+will not discuss its use with npm.
 
-<p>Please see the jsDelivr website for more information
-than I am providing here before using it.
+<p>Please see the
+<a href='https://www.jsdelivr.com'>jsDelivr website</a>
+for more information than I am providing here before using it.
 
-<h2>Using jsDelivr with files in GitHub</h2>
+<h2>Using jsDelivr for Javascript files in GitHub</h2>
 
 <p>
 A typical scenario in my case is that I have a Javascript
 file in its source GitHub repository, and I want my web
 page (hosted in an entirely separate location) to be able to
 use that Javascript file.  The file could be a web component,
-for example.  
+for example. 
 
 <p>
-First, the GitHub repository containing the Javascript file
-must be public.  Assuming that requirement is in place,
-the website can access the file with a URL of the form
-https://cdn.jsdelivr.net/gh/[github_account]/[repo]@[version]/d[path_to_file].
+(Javascript that is specific to the website and is maintained
+in the same repository as the website is probably not a good
+candidate for accessing through jsDelivr; the main benefits
+are associated with shared Javascript libraries.)
+
+<p>
+One requirement for using jsDelivr to serve Javascript from
+a GitHub repository is that the repository must be public.
+Given that, anybody can access the file with a URL of the form
+https://cdn.jsdelivr.net/gh/[github_account]/[repo]@[version]/[path_to_file].
 
 <p>
 An easy way to generate the correct URL is to go to
@@ -42,8 +49,17 @@ and paste the GitHub "raw" URL for your file.  The jsDelivr tool will then provi
 <h2>Purging the jsDelivr cache</h2>
 <p>
 Because jsDelivr caches the Javascript files that it serves,
-you might need to purge the cache.  A tool for this is
+you might need to purge the cache so that jsDelivr
+pulls the most recent file from GitHub.  A tool for this is
 available at
-<a href="https://www.jsdelivr.com/tools/purge">jsdelivr.com/tools/purge</a>
+<a href="https://www.jsdelivr.com/tools/purge">jsdelivr.com/tools/purge</a>.
+
+<h2>But why not serve Javascript directly from GitHub?</h2>
+<p>
+You could serve Javascript libraries directly from GitHub, but
+you would need to use GitHub Pages.  (Accessing directly through
+the "raw" URL does not work because GitHub uses a MIME type
+text/plain for those files.)  GitHub Pages has limitations and
+lacks the features that jsDelivr provides.
 
 </article>
