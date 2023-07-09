@@ -67,7 +67,7 @@ ul.topmenubar {
   align-items: center;
 }
 
-ul.topmenubar li a, ul.topmenubar li span {
+ul.topmenubar > li > a, ul.topmenubar > li > span {
   display: flex;
   text-align: center;
   color: ghostwhite;
@@ -91,6 +91,15 @@ ul.topmenubar li:hover > ul {
 
 ul.topmenubar li ul li:hover {
   background: hsl(180, 25%, 45%);
+}
+
+ul.dropmenu li {
+  padding: .5rem;
+}
+
+ul.dropmenu li a, ul.dropmenu li span {
+  color: ghostwhite;
+  text-decoration: none;
 }
 
 #bodycontent>footer {

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<title>Javascript CDN: jsDelivr</title>
+<script src="main.js"></script>
+<article>
+
+<h1>Using jsDelivr as a Javascript CDN</h1>
+<h2>jsDelivr basics</h2>
+
+<p>
+jsDelivr provides a free Javascript CDN that is free and
+easy to use.  The home page for jsDelivr is at
+<a href='https://www.jsdelivr.com'>jsdelvr.com</a>.
+    
+<p>
+Although jsDelivr can access files stored in either npm or GitHub,
+I am using it only with GitHub.  Consequently, I will not
+discuss its use with npm.
+
+<p>Please see the jsDelivr website for more information
+than I am providing here before using it.
+
+<h2>Using jsDelivr with files in GitHub</h2>
+
+<p>
+A typical scenario in my case is that I have a Javascript
+file in its source GitHub repository, and I want my web
+page (hosted in an entirely separate location) to be able to
+use that Javascript file.  The file could be a web component,
+for example.  
+
+<p>
+First, the GitHub repository containing the Javascript file
+must be public.  Assuming that requirement is in place,
+the website can access the file with a URL of the form
+https://cdn.jsdelivr.net/gh/[github_account]/[repo]@[version]/d[path_to_file].
+
+<p>
+An easy way to generate the correct URL is to go to
+<a href='https://www.jsdelivr.com/github'>jsdelivr.com/github</a>
+and paste the GitHub "raw" URL for your file.  The jsDelivr tool will then provide the corresponding jsDelivr CDN URL.
+
+<h2>Purging the jsDelivr cache</h2>
+<p>
+Because jsDelivr caches the Javascript files that it serves,
+you might need to purge the cache.  A tool for this is
+available at
+<a href="https://www.jsdelivr.com/tools/purge">jsdelivr.com/tools/purge</a>
+
+</article>
