@@ -7,7 +7,7 @@ document.head.innerHTML += `
   <link rel="stylesheet" href="main.css" blocking=render>
   <style>
     body { visibility: hidden; }
-  <style>`
+  </style>`
 
 
 
